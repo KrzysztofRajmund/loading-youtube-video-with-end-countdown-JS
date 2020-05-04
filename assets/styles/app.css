@@ -1,0 +1,48 @@
+* 
+html {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 150px;
+  margin-left: 250px;
+}
+
+button {
+  border: 1px solid #000000;
+  border-radius: 5px;
+  padding: 0.5rem 2rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+input {
+  border: 1px solid #000000;
+  border-radius: 5px;
+  padding: 0.5rem 2rem;
+  font: inherit;
+}
+
+button:hover,
+button:active {
+  background:#3f04041f;
+  border-color: #4b0006;
+}
+
+#ytCard {
+  display: none;
+  padding: 1rem;
+  margin-top: 50px;
+  border-radius: none;
+  box-shadow: 0 2px 10px rgba(46, 0, 0, 0.26);
+}
+
+iframe{
+  position: relative;
+  z-index: -1;
+
+}
+.playerBackground{
+  background: rgba(76, 175, 80, 0.3);
+  
+}
