@@ -1,68 +1,83 @@
 //getting DOM elements
-const sendBtn = document.getElementById('send-btn');
-const playerBackground = document.getElementById("playerBackground")
+const sendBtn = document.getElementById("send-btn");
+const inputBtn = document.getElementById("input-btn");
+const playerBackground = document.getElementById("playerBackground");
 
-
+const keyPressHandler = (event) => {
+  let x = event.keyCode;
+  if (x == 13) {
+    sendHandler();
+  }
+};
 
 const sendHandler = () => {
-  let inputBtn = document.getElementById('input-btn').value;
-  console.log(inputBtn,'inputBtn clicked')
-if(inputBtn){
-  onYouTubeIframeAPIReady(inputBtn)
+  let inputValue = document.getElementById("input-btn").value;
+  if (inputValue) {
+    onYouTubeIframeAPIReady(inputValue);
+
+    const inputClear = inputBtn
+    const btnClear = document.getElementById("send-btn");
+    [inputClear,btnClear].forEach((element) =>
+    addEventListener("focusout",()=>{
+      inputClear.value = "";
+    }))
+  }
 }
-}
+
 
 var player;
-      const onYouTubeIframeAPIReady = (inputBtn) => {
-        player = new YT.Player('player', {
-          height: '360',
-          width: '640',
-          videoId: `${inputBtn}`,
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
-        });
-        console.log(player,"player")
-      }
+
+const onYouTubeIframeAPIReady = (inputValue) => {
+  player = new YT.Player("player", {
+    height: "360",
+    width: "640",
+    videoId: `${inputValue}`,
+    events: {
+      onReady: onPlayerReady,
+      onStateChange: onPlayerStateChange,
+    },
+  });
+};
+
+const onPlayerReady = (event) => {
+  event.target.playVideo();
+}
+
+var done = false;
+
+const onPlayerStateChange = (event) => {
+  let startAnimation = event.target.getDuration() * 1000 - 10000;
+
+  if (event.data == YT.PlayerState.PLAYING && !done) {
+    setTimeout(playAnimation, startAnimation);
+
+    done = true;
+  }
+}
 
 
+let counter = 10;
 
-      function onPlayerReady(event) {
-        event.target.playVideo();
-      }
+const playAnimation = () => {
+  const countElement = document.createElement("div");
+  countElement.setAttribute("class", "countElement");
 
-      var done = false;
-      function onPlayerStateChange(event) {
-      
-        let startAnimation = (event.target.getDuration() * 1000)-10000
+  let interval = setInterval(function () {
+    counter--;
+    let playerElement = document.getElementsByTagName("iframe")[0];
+    playerElement.setAttribute("class", "overlay");
+    countElement.innerText = counter;
 
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(playAnimation, startAnimation);
-            
-          done = true;
-        }
-      }
+    if (counter === 0) {
+      countElement.style.display = "none"
+      playerElement.style.filter = "none";
+      clearInterval(interval);
+    }
+  }, 1000);
 
-      let counter = 10
-          function playAnimation (){
-            let interval =  setInterval(function(){
-              console.log(counter);
-              playerBackground.setAttribute("class","playerBackground")
-              counter--
-              if (counter === -1){
-                console.log("animation finished")
-                clearInterval(interval);
-              }
-            }, 1000);
-          }
+  playerBackground.appendChild(countElement);
+}
 
-
-     
-      
-      
-      
-
-
-  //event listeners
-  sendBtn.addEventListener('click', sendHandler);
+//event listeners
+sendBtn.addEventListener("click", sendHandler);
+inputBtn.addEventListener("keyup", () => keyPressHandler(event));

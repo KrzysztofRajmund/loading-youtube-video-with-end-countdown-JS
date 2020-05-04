@@ -1,48 +1,74 @@
-* 
 html {
-  font-family: sans-serif;
+    font-family: sans-serif;
+}
+
+#jsApp{
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 body {
-  margin: 150px;
-  margin-left: 250px;
+  margin: 3rem;
+}
+
+h3{
+  padding: 0.5rem 2rem;
+  margin: 0.1rem;
 }
 
 button {
-  border: 1px solid #000000;
   border-radius: 5px;
   padding: 0.5rem 2rem;
-  font: inherit;
+  margin: 0.1rem;
   cursor: pointer;
+
+  background-color: #2B2B28;
+  border: 0.5px solid #F2F2F2;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 140.62%;
+  letter-spacing: 0.15em;
+  color: #F2F2F2;
 }
 
 input {
-  border: 1px solid #000000;
   border-radius: 5px;
   padding: 0.5rem 2rem;
-  font: inherit;
+  margin: 0.1rem;
+
+  background-color: #2B2B28;
+  border: 0.5px solid #F2F2F2;
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 140.62%;
+  letter-spacing: 0.15em;
+  color: #F2F2F2;
 }
 
-button:hover,
-button:active {
-  background:#3f04041f;
-  border-color: #4b0006;
+button:hover {
+  background-color:#CCC;
+  color:#2B2B28;
 }
 
-#ytCard {
-  display: none;
-  padding: 1rem;
-  margin-top: 50px;
-  border-radius: none;
-  box-shadow: 0 2px 10px rgba(46, 0, 0, 0.26);
+#playerBackground {
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
-iframe{
-  position: relative;
-  z-index: -1;
 
+.overlay {
+  filter: brightness(50%);
 }
-.playerBackground{
-  background: rgba(76, 175, 80, 0.3);
-  
+
+.countElement {
+  font-size: 80px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+  font-weight: bolder;
+   
+  color:#F2F2F2;
+  transform: translate(-675%,-10%);
+    -ms-transform: translate(-675%,-10%);
 }
