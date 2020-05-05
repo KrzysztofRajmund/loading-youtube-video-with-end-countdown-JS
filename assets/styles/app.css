@@ -72,3 +72,41 @@ button:hover {
   transform: translate(-675%,-10%);
     -ms-transform: translate(-675%,-10%);
 }
+
+
+@media screen and (max-width: 600px) {
+
+  #jsApp {
+    display:block;
+  }
+
+  button {
+    font-size: 12px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    padding: 0.2rem 1rem;
+  }
+
+  input {
+    font-size: 12px;
+    font-weight: bolder;
+    letter-spacing: 0.25em;
+    padding: 0.2rem 1rem;
+  }
+
+  ::-webkit-input-placeholder { /* Edge */
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+      font-size: 12px;
+      text-transform: uppercase;
+  }
+  
+  ::placeholder {
+      font-size: 12px;
+      text-transform: uppercase;
+  }
+}
