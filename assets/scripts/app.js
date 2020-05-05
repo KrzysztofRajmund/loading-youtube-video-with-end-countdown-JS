@@ -12,13 +12,18 @@ const keyPressHandler = (event) => {
 
 const sendHandler = () => {
   let inputValue = document.getElementById("input-btn").value;
-  if (inputValue) {
-    onYouTubeIframeAPIReady(inputValue);
+
+  let myReg = /(.*?)(^|\/|v=)([a-z0-9_-]{11})(.*)?/gim
+  let inputArray = myReg.exec(inputValue);
+  let movieId = inputArray[3];
+
+  if (movieId) {
+    onYouTubeIframeAPIReady(movieId);
 
     const inputClear = inputBtn
     const btnClear = document.getElementById("send-btn");
     [inputClear,btnClear].forEach((element) =>
-    addEventListener("focusout",()=>{
+    element.addEventListener("focusout",()=>{
       inputClear.value = "";
     }))
   }
@@ -27,11 +32,11 @@ const sendHandler = () => {
 
 var player;
 
-const onYouTubeIframeAPIReady = (inputValue) => {
+const onYouTubeIframeAPIReady = (movieId) => {
   player = new YT.Player("player", {
     height: "360",
     width: "640",
-    videoId: `${inputValue}`,
+    videoId: `${movieId}`,
     events: {
       onReady: onPlayerReady,
       onStateChange: onPlayerStateChange,
