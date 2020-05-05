@@ -85,14 +85,14 @@ button:hover {
     font-weight: bolder;
     text-transform: uppercase;
     letter-spacing: 0.25em;
-    padding: 0.2rem 1rem;
+    padding: 0.5rem 1rem;
   }
 
   input {
     font-size: 12px;
     font-weight: bolder;
     letter-spacing: 0.25em;
-    padding: 0.2rem 1rem;
+    padding: 0.5rem 1rem;
   }
 
   ::-webkit-input-placeholder { /* Edge */
